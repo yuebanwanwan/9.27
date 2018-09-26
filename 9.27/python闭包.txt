@@ -1,0 +1,64 @@
+def make_adder(addend):
+    def adder(augend):
+        return addend + augend
+    return adder
+
+p1 = make_adder(12)
+p2 = make_adder(16)
+
+print(p1(10)) 输出22
+print(p2(10)) 输出26
+笔记：关键点在于adder函数引用了外部的变量(将外部的参数与该函数绑定在了一起)
+这样就形成了一个新的函数,这个外部的参数或者变量就是新函数adder的配置信息，
+提供不同的配置信息就可以得到定制的函数了
+
+关联小知识点
+python引用变量的顺序： 当前作用域局部变量->外层作用域变量->当前模块中的全局变量->python内置变量 。
+global关键字用来在函数或其他局部作用域中使用全局变量。但是如果不修改全局变量也可以不使用global关键字。
+在global_test 函数中程序会因为“如果内部函数有引用外部函数的同名变量或者全局变量,并且对这个变量有修改.那么python会认为它是一个局部变量,又因为函数中没有gcount的定义和赋值，所以报错。
+声明全局变量，如果在局部要对全局变量修改，需要在局部也要先声明该全局变量：
+先在局部声明该全局变量
+global gcount
+然后在改变该全局变量
+nonlocal关键字用来在函数或其他作用域中使用外层(非全局)变量。
+
+
+
+def hellocounter(name):
+    count = 0
+    def counter():
+        #引用外部的非全局变量
+        nonlocal count
+        count+=1
+        print('Hello' + name + ',' + str(count) + 'access')
+    return counter
+
+hello = hellocounter('xiaoming')
+for i in range(3):
+    hello()
+
+输出如下:
+Helloxiaoming,1access
+Helloxiaoming,2access
+Helloxiaoming,3access
+
+
+怎么样?这个程序熟悉吗?这不是传说的的装饰器吗?对,这就是装饰器,其实,装饰器就是一种闭包,我们再回想一下装饰器的概念:对函数(参数,返回值等)进行加工处理,生成一个功能增强版的一个函数。再看看闭包的概念,这个增强版的函数不就是我们配置之后的函数吗?区别在于,装饰器的参数是一个函数或类,专门对类或函数进行加工处理。
+
+python里面的好多高级功能，比如装饰器，生成器，列表推到，闭包，匿名函数等，开发中用一下，可能会达到事半功倍的效果！
+http://www.cnblogs.com/ma6174/archive/2013/04/15/3022548.html
+写的真他妈好！
+
+
+
+
+
+
+
+
+
+
+
+
+
+

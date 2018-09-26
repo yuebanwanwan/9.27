@@ -1,0 +1,141 @@
+模糊查询
+
+LIKE'a%'     %符号放在后面
+
+SQL返回唯一不同的值
+SELECT DISTINCT
+事实证明DISTINCT只能作用于一列数据的时候，其他时候好像是无效的。
+
+
+
+SQL 中最重要的 DDL 语句:
+
+CREATE DATABASE - 创建新数据库
+ALTER DATABASE - 修改数据库
+CREATE TABLE - 创建新表
+ALTER TABLE - 变更（改变）数据库表
+DROP TABLE - 删除表
+CREATE INDEX - 创建索引（搜索键）
+DROP INDEX - 删除索引
+
+
+关键词 DISTINCT 用于返回唯一不同的值。
+SELECT DISTINCT 列名称 FROM 表名称
+SELECT DISTINCT Company FROM Orders 
+
+SQL 使用单引号来环绕文本值（大部分数据库系统也接受双引号）。如果是数值，请不要使用引号。
+
+
+ORDER BY 语句
+ORDER BY 语句用于根据指定的列对结果集进行排序。
+
+ORDER BY 语句默认按照升序对记录进行排序。
+
+如果您希望按照降序对记录进行排序，可以使用 DESC 关键字。
+记住ORDER BY 或者ORDER BY DESC 和WHERE连用的话要放在后面。
+
+
+
+INSERT INTO table_name (列1, 列2,...) VALUES (值1, 值2,....)
+技巧：VALUES关键字两边一一对应。
+
+
+UPDATA--TABLES--SET---WHERE
+
+
+
+
+
+
+在创建表时添加唯一unique约束
+create table person(
+   id int,
+   firstname varchar(20),
+   lastname varchar(20),
+   sex int,#就当是使用alter table person add sex int添加的
+   primary key(id),
+   unique(firstname));
+
+使用alter table 表名称添加属性字段
+alter table person
+add sex int;
+
+删除表的字段
+alter table person
+drop column 字段名
+
+添加字段唯一unique约束
+alter table person
+add unique(firstname);
+
+删除字段唯一约束
+alter table person
+drop index firstname;
+
+同时为多个字段添加唯一unique约束
+alter table person
+add unique(firstname,lastname);
+
+命名unique约束，并同时定义多个字段unique约束
+alter talble person
+add constraint 假装是一个名字 unique()#注意通过此种方法建立的unique约束索引，必须使用命名时的名字来drop index 假装是一个名字，使用字段名称无效。
+经过测试发现Mysql不能通过该语法：
+alter table person
+add constraint 假装是一个名字 unique(字段1，字段2)同时添加约束，只能作用于第一个约束且约束类型是MUL
+
+
+添加外键约束
+alter table person
+add foreign key(person的字段名)
+references othertable(id)
+
+SQL KEY 属性主要是用来添加约束constraint和索引index
+MUL约束 值可以重复/在Mysql中也表示外键约束
+
+如果要命名foreign约束，使用以下语法
+alter table tablename
+add constraint justname foreign key(tablename_ziduan) references other table(id)
+记得数据类型要匹配，不然会报错
+
+
+记住between and 是跟在where关键字后面的
+
+
+or and 运算符是用在where字句中连接多个条件的
+
+order by 记住是在写完能返回查询结果的sql语句后面的
+还可以在最后添加desc降序排序结果集
+
+
+
+以字母顺序显示公司名称（Company），并以数字顺序显示顺序号（OrderNumber）：
+
+SELECT Company, OrderNumber FROM Orders ORDER BY Company, OrderNumber
+
+记住delete中有两个from就完事了
+select from /delete from
+delete from table可以在不删除表的情况下情况表中的记录
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

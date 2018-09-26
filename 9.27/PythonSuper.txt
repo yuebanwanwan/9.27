@@ -1,0 +1,107 @@
+https://www.tuicool.com/articles/eEzmmay
+https://www.cnblogs.com/pengsixiong/p/5449546.html
+243870
+
+Try running sudo apt-get update before trying to install the package. After installation the system doesn't have an up-to-date package list so you won't be able to find the package.
+
+Once you've done this you should be able to install as normal.
+
+ubuntu保存配置文件
+https://zhidao.baidu.com/question/461526892.html
+
+python相关模块下载
+https://www.lfd.uci.edu/~gohlke/pythonlibs/
+
+
+
+
+    <select name="user_permissions" id="id_user_permissions" multiple>
+  <option value="1">admin | log entry | Can add log entry</option>
+
+  <option value="2">admin | log entry | Can change log entry</option>
+
+  <option value="3">admin | log entry | Can delete log entry</option>
+
+  <option value="4">admin | log entry | Can view log entry</option>
+
+  <option value="9">auth | group | Can add group</option>
+
+  <option value="10">auth | group | Can change group</option>
+
+  <option value="11">auth | group | Can delete group</option>
+
+  <option value="12">auth | group | Can view group</option>
+
+  <option value="5">auth | permission | Can add permission</option>
+
+  <option value="6">auth | permission | Can change permission</option>
+
+  <option value="7">auth | permission | Can delete permission</option>
+
+  <option value="8">auth | permission | Can view permission</option>
+
+  <option value="13">contenttypes | content type | Can add content type</option>
+
+  <option value="14">contenttypes | content type | Can change content type</option>
+
+  <option value="15">contenttypes | content type | Can delete content type</option>
+
+  <option value="16">contenttypes | content type | Can view content type</option>
+
+  <option value="25">focus | article | Can add article</option>
+
+  <option value="26">focus | article | Can change article</option>
+
+  <option value="27">focus | article | Can delete article</option>
+
+  <option value="28">focus | article | Can view article</option>
+
+  <option value="29">focus | author | Can add author</option>
+
+  <option value="30">focus | author | Can change author</option>
+
+  <option value="31">focus | author | Can delete author</option>
+
+  <option value="32">focus | author | Can view author</option>
+
+  <option value="33">focus | 文章的分类 | Can add 文章的分类</option>
+
+  <option value="34">focus | 文章的分类 | Can change 文章的分类</option>
+
+  <option value="35">focus | 文章的分类 | Can delete 文章的分类</option>
+
+  <option value="36">focus | 文章的分类 | Can view 文章的分类</option>
+
+  <option value="37">focus | comment | Can add comment</option>
+
+  <option value="38">focus | comment | Can change comment</option>
+
+  <option value="39">focus | comment | Can delete comment</option>
+
+  <option value="40">focus | comment | Can view comment</option>
+
+  <option value="21">focus | user | Can add user</option>
+
+  <option value="22">focus | user | Can change user</option>
+
+  <option value="23">focus | user | Can delete user</option>
+
+  <option value="24">focus | user | Can view user</option>
+
+  <option value="41">focus | poll | Can add poll</option>
+
+  <option value="42">focus | poll | Can change poll</option>
+
+  <option value="43">focus | poll | Can delete poll</option>
+
+  <option value="44">focus | poll | Can view poll</option>
+
+  <option value="17">sessions | session | Can add session</option>
+
+  <option value="18">sessions | session | Can change session</option>
+
+  <option value="19">sessions | session | Can delete session</option>
+
+  <option value="20">sessions | session | Can view session</option>
+
+</select>

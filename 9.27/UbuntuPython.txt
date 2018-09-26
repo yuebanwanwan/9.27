@@ -1,0 +1,53 @@
+在Ubuntu上安装Python3.6
+https://www.cnblogs.com/yjlch1016/p/8641910.html
+https://blog.csdn.net/yanzhibo/article/details/75913347
+在Ubuntu上安装spcapyd时出现Twisted版本问题解决办法
+https://blog.csdn.net/jaket5219999/article/details/70146917
+在Ubuntu指定位置创建文件
+sudo mkdir /etc/scrapyd
+    打开该文件进行编辑
+	sudo vi /etc/scrapyd/scrapyd.conf
+
+
+
+172.17.208.208
+
+172.17.223.255
+
+255.255.240.0
+
+39.106.201.216
+
+0.0.0.0/0
+
+scrapyd default scrapyd.conf
+
+[scrapyd]
+eggs_dir    = eggs
+logs_dir    = logs
+items_dir   =
+jobs_to_keep = 5
+dbs_dir     = dbs
+max_proc    = 0
+max_proc_per_cpu = 4
+finished_to_keep = 100
+poll_interval = 5.0
+bind_address = 127.0.0.1
+http_port   = 6800
+debug       = off
+runner      = scrapyd.runner
+application = scrapyd.app.application
+launcher    = scrapyd.launcher.Launcher
+webroot     = scrapyd.website.Root
+
+[services]
+schedule.json     = scrapyd.webservice.Schedule
+cancel.json       = scrapyd.webservice.Cancel
+addversion.json   = scrapyd.webservice.AddVersion
+listprojects.json = scrapyd.webservice.ListProjects
+listversions.json = scrapyd.webservice.ListVersions
+listspiders.json  = scrapyd.webservice.ListSpiders
+delproject.json   = scrapyd.webservice.DeleteProject
+delversion.json   = scrapyd.webservice.DeleteVersion
+listjobs.json     = scrapyd.webservice.ListJobs
+daemonstatus.json = scrapyd.webservice.DaemonStatus

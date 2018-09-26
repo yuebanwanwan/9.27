@@ -1,0 +1,212 @@
+list
+list
+list
+>>> list = [1,2,3,4]
+>>> print(list)
+[1, 2, 3, 4]
+>>> print(list[0])
+1
+>>> list[0] = 5
+>>> print(list[0])
+5
+>>> print(list[-1])
+4
+>>> list.append(6)
+>>> print(list)
+[5, 2, 3, 4, 6]
+>>> list.insert(1,7)
+>>> print(list[1])
+7
+>>> print(list)
+[5, 7, 2, 3, 4, 6]
+>>> list.pop()
+6
+>>> print(list)
+[5, 7, 2, 3, 4]
+>>> 
+
+
+tuple
+tuple
+tuple
+>>> student = ('Michael','Bob','Tracy')
+>>> print(student)
+('Michael', 'Bob', 'Tracy')
+>>> print(student[2])
+Tracy
+>>> print(student[-1])
+Tracy
+>>> 
+tuple不可变其实是起内部的指针地址不变(里面存储的全是对象的指针)，它指向的元素还是可变的，例如指向list，该list是可变的。
+
+
+
+dict.get('a',-1)
+注意如果key不存在会返回指定的默认值,但是并不会在dict内部创建该key！！！！！
+如果指定的返回值是None的话，那么python交互环境不显示返回结果
+如果要添加key-value对的话，直接使用：
+dict['newkey'] = 'newvalue'
+请务必注意，dict内部存放的顺序和key放入的顺序是没有关系的。
+
+和list比较，dict有以下几个特点：
+
+查找和插入的速度极快，不会随着key的增加而变慢；
+需要占用大量的内存，内存浪费多。
+>>> student = ('Michael','Bob','Tracy')
+>>> print(student)
+('Michael', 'Bob', 'Tracy')
+>>> print(student[2])
+Tracy
+>>> print(student[-1])
+Tracy
+>>> mydict = {}
+>>> mydict['a']
+Traceback (most recent call last):
+  File "<pyshell#5>", line 1, in <module>
+    mydict['a']
+KeyError: 'a'
+>>> mydict['a'] = 1
+>>> print(mydict['a'])
+1
+>>> print(mydict.get('a'))
+1
+>>> mydict.get('b','default')
+'default'
+>>> mydict['b']
+Traceback (most recent call last):
+  File "<pyshell#10>", line 1, in <module>
+    mydict['b']
+KeyError: 'b'
+>>> mydict.get('b',None)
+>>> mydict['b'] = 2
+>>> print(mydict)
+{'a': 1, 'b': 2}
+>>> 
+
+
+
+set
+set
+set
+
+set是一组key的集合，其中的值不能重复
+>>> myset = set([1,2,3,4,5])
+>>> myset
+{1, 2, 3, 4, 5}
+>>> print(type(myset))
+<class 'set'>
+>>> myset2 = set([1,2,1,4,5,6,1,1,2,4,1,5,1])
+>>> myset2
+{1, 2, 4, 5, 6}
+>>> myset2.add(7)
+>>> myset2
+{1, 2, 4, 5, 6, 7}
+>>> myset.add(1)
+>>> myset
+{1, 2, 3, 4, 5}
+>>> myset.remove(1)
+>>> myset
+{2, 3, 4, 5}
+>>> myset.remove(5)
+>>> myset
+{2, 3, 4}
+>>> s1 = set([1,2,3])
+>>> s2 = set([2,3,4])
+>>> s1 & s2
+{2, 3}
+>>> s1 | s2
+{1, 2, 3, 4}
+>>> s1.add([1])
+Traceback (most recent call last):
+  File "<pyshell#17>", line 1, in <module>
+    s1.add([1])
+TypeError: unhashable type: 'list'
+>>> 
+set可以看成数学意义上的无序和无重复元素的集合，因此，两个set可以做数学意义上的交集、并集等操作：
+set和dict的唯一区别仅在于没有存储对应的value，但是，set的原理和dict一样，所以，同样不可以放入可变对象，因为无法判断两个可变对象是否相等，也就无法保证set内部“不会有重复元素”。试试把list放入set，看看是否会报错。
+
+
+
+
+>>> list1 = [2,5,4,1,6,4,2,11,6]
+>>> list1
+[2, 5, 4, 1, 6, 4, 2, 11, 6]
+>>> list1.sort()
+>>> list1
+[1, 2, 2, 4, 4, 5, 6, 6, 11]
+>>> str1 = 'aa'
+>>> str1
+'aa'
+>>> print(id(str1))
+52905720
+>>> str1 = str1.replace('a','b')
+>>> str1
+'bb'
+>>> print(id(str1))
+49440672
+>>> 
+所以，对于不变对象来说，调用对象自身的任意方法，也不会改变该对象自身的内容。相反，这些方法会创建新的对象并返回，这样，就保证了不可变对象本身永远是不可变的。
+!!!!!确定set里存储的都是指针
+
+
+hash表是通过散列值(类似于数组的索引)而进行快速查找的一种数据结构,但是如果分配的内存太小容易引起冲突(即不同的key值容易计算出相同的hash值)，为了减少冲突所以需要分配大量的内存，简单说key就是数组中的索引，通过key值即可实现快速随机访问需要的值，是典型的用空间来换取时间的做法，而数组结构刚刚相反，是典型的时间来换取占用较少的空间的做法
+
+
+b = a[i:j:s]这种格式呢，i,j与上面的一样，但s表示步进，缺省为1.
+所以a[i:j:1]相当于a[i:j]
+当s<0时，i缺省时，默认为-1. j缺省时，默认为-len(a)-1
+所以a[::-1]相当于 a[-1:-len(a)-1:-1]，也就是从最后一个元素到第一个元素复制一遍。所以你看到一个倒序的东东。
+
+如果还不理解，把我说的东西测试一遍，你就明白了
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,218 @@
+HTTP(超文本传输协议)
+
+GET请求:从指定资源(url)获取数据
+POST请求:向指定资源(url)提交数据
+
+GET请求关键点:
+1    GET请求可能被缓存(当在短时间里发出两次相同的GET请求时,第二次返回的数据可能是缓存里的)
+2    GET请求保留在浏览器历史记录中
+3    GET请求可添加到书签
+4    不安全
+5    有长度限制
+6    只能请求而不能提交数据
+
+POST请求关键点
+1  POST请求不会被缓存
+2  不会保留到浏览历史中
+3  不能添加到书签
+4  安全
+5  无长度限制
+6  可向指定资源提交数据
+
+
+jQuery get()和post()方法用于通过HTTP GET或POST请求从服务器请求数据
+
+
+get()
+
+$.get(url,callback);
+
+$.get('www.baidu.com',function(data,status){
+    alert(data + status);
+});
+
+
+post()
+
+$.post(url,data,callback);
+
+data:提交的数据(和请求一起发送).
+
+
+jQuery noConflict()方法
+
+$.noConflict();释放对$符号的控制，使其他框架可以使用。
+
+class选择器在xPath和CSS中的区别
+<p class="aa bb"></p>
+
+xPath:$("p[class='aa bb']");
+CSS:  $(".aa.bb");
+
+
+p:first      第一个p元素($("p").eq(0))
+p:last
+
+
+
+div > p   div元素的 直接 子元素中的所有p元素
+div p     div元素的后代(子、孙) 中的所有p元素
+
+div:eq(0) 所有div元素中的第一个div元素
+
+
+
+Django中关于request的一些属性
+
+request.path:表示提交请求页面完整地址的字符串，不包括域名,比如"/focus/login/"
+
+request.method:表示请求使用的HTTP方法,该方法总是大写的'GET'/'POST'
+
+request.GET['key']:类字典对象，可以获取获取url中的参数以及form表单中的参数(在view函数中只需要一个request参数就够了)
+
+request.POST['key']:类字典对象，包含POST请求中提交的form表单数据，当然一个POST提交的表单中也可以没有数据
+
+request.COOKIES:类字典对象，包含所有的COOKIE信息，key和value都是字符串
+
+request.FILES:类字典对象,包含所有上传的文件,FILES的键来自<input type="file" />中的name。 FILES是一个标准的python字典对象,包含以下三个键：
+
+filename:字符串，表示上传的文件名
+
+content-type:上传文件内容类型
+
+content:上传文件的原始内容
+
+注意FILES只在请求的方法是POST，并且提交的<form>包含enctype="multipart/form-data"是才包含数据，不然只是一个空对象
+
+request.META:包含HTTP请求的头信息,也是一个字典对象
+CONTENT_LENGTH
+CONTENR_TYPE
+
+REMOTE_ADDR:客户端IP地址
+
+REMOTE_HOST:客户端主机名
+
+SERVER_NAME:服务器主机名
+
+SERVER_PORT:服务器端口号
+
+
+request.user:表示当前登录对象，若未登录，user.is_authenticated()返回False(此时这个user对象为None)
+
+request.session:可读写的类字典对象，表示当前session。仅当Django激活session支持时有效
+
+request.raw_post_data:POST的原始数据，用于对数据的复杂处理。
+
+
+request的方法属性
+
+request.__getitem__(key):请求所给键的GET/POST值，先POST，若key不存在则引发keyerror
+该方法使用户可以以访问字典的方式来访问一个 HttpRequest 实例。
+例如， request["foo"] 和先检查 request.POST["foo"] 再检查request.GET["foo"] 一样。
+
+request.__haskey__():返回True/False，标识request.GET或request.POST是否包含所给定的键
+
+request.get_full_path():返回path若请求有效，例如/focus/register/
+
+request.is_secure():判断是HTTP还是HTTPS
+
+
+
+
+Django用户模型中user的常见属性
+
+user.is_staff():默认False，决定用户是否可以访问admin后台管理界面
+
+user.is_active():用户是否活跃
+
+is_authenticated():用户是否通过验证
+
+if user.is_anthenticated():
+	#判断用户是否登录成功
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,22 @@
+1 添加/删除字段
+2 添加/删除唯一约束uniqe
+drop index column_name
+3 添加/删除普通索引index
+4 添加/删除外键foreign约束
+
+
+
+增加列
+alter table table_name
+add column_name int;
+修改列
+alter table table_name
+modify column column_name varchar(100);
+删除列
+alter table table_name
+drop column column_name;
+
+主键设置自动增长
+create table table_name(
+   int id not null auto_increment,primary key(id),
+   age int);

@@ -1,0 +1,6 @@
+新建一个项目
+scrapy startproject baiduproject
+新建一个Spider（需要进入相关目录）
+scrapy genspider baidu www.baidu.com
+开启爬虫
+scrapy crawl baidu

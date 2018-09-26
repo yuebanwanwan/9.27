@@ -1,0 +1,154 @@
+$("div")是选取所有div元素
+jQuery是客户点client脚本库
+jQuery html()方法不适用于XML文档
+
+将所有p元素的背景颜色设置为红色
+$("p").css("background-color","red")
+
+SQL 中drop并不会跟着from 直接加table_name就是这么吊
+
+$("div.intro")选取所有class="intro"的div元素
+所有！！！
+所有！！！
+所有！！！
+$.ajax()用于执行异步HTTP请求。
+
+将所有div元素的高度设置为100像素
+$("div").height=100/$("div").height(100)
+注意这里没有引号。
+
+toggleClass()用于添加或删除被选元素的一个或多个类。
+
+常见DOM事件
+click()     单击
+dbclick()   双击
+mouseenter()当鼠标指针穿过元素
+$(document).ready(function(){
+   $("p").mouseenter(function(){
+        alert('鼠标移动到了某一个p元素上')
+  })
+});
+mouseleave()当鼠标指针离开元素
+$(document).ready(function(){
+   $("p").mouseleave(function(){
+        alert("鼠标指针离开了某一个p元素")  
+  });
+});
+mousedown()当鼠标指针在元素上并按键时，和click()差不多
+$(document).ready(function(){
+    $("p").mousedown(function(){
+         alert('您的鼠标在某p元素上并点击了一下')
+  });
+});
+mouseup()在元素上松开鼠标按键时(此时已经按下了鼠标键)
+$(document).ready(function(){
+   $("p").mouseup(function(){
+       alert("您在某p元素上松开了鼠标键")
+  });
+});
+hover()函数用于模拟光标悬停事件
+$(document).ready(function(){
+   $("p").hover(function(){
+     alert("您进入了某个p元素")
+  },
+     function(){
+     alert("您离开了这个某p元素")
+   }
+ );
+});
+记住会按顺序触发
+
+focus()函数当元素获取焦点时触发(比如点击了某文本框)
+blur()函数当取消某一个元素的聚焦时触发
+$(document).ready(function(){
+    $("#input").focus(function(){
+        $(this).css("background-color","#cccccc");
+  });
+    $("#input").blur(function(){
+        $(this).css("background-color","red");
+  });
+});
+每个$语句的最后都应该加一个分号----;
+
+
+hide()隐藏元素
+show()显示元素
+toggle()函数用来来回切换这两种效果
+$(document).ready(function(){
+    $("button").click(function(){
+      $("p").hide();//隐藏所有的p元素
+      $("p").show();//显示所有的p元素
+  });
+});
+hide()函数和show()函数有一个可选的speed参数，参数值为 'slow' 'fast' 毫秒(100/100)
+还有一个可选的回调函数参数callback,可用于处理函数的返回值。
+$(document).ready(function(){
+    $("#hello").toggle('slow',test);
+    function test(){
+      alert("Are you ok!")
+  }
+});
+
+fadeIn()淡入
+fadeOut()淡出
+fadeToggle()来回切换
+实现原理就是在元素属性display:none/display:block
+这三个函数也有三个可选的参数，注意一定要按顺序
+speed同上
+opacity渐变为给定的透明度,在0-1之间取值
+callback处理返回信息的回调函数
+
+
+jQuery滑动效果
+slideDown()向下滑入元素   改变display属性
+slideUp() 向上滑入元素   改变display属性
+slideToggle() 切换
+向上向下的滑入根本是不存在的,只是定义滑入元素时和触发元素之间的上下位置不同而已
+和hide()函数和show()函数一样拥有两个可选参数speed,callback
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

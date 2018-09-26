@@ -1,0 +1,138 @@
+text()设置或返回所选元素的文本内容
+html()设置或返回元素的内容(包括了HTML标记)
+val()设置或返回表单字段的值,可以获取输入文本框input中的值
+
+text()/html()设置值的时候会覆盖原有的内容
+
+$(document).ready(function(){
+    $("#button").click(function(){
+         alert($("#input").text());
+  });
+    $("#button2").click(function(){
+         alert($("#input").html());
+  });
+});
+form 表单
+input输入文本框
+$(document).ready(function(){
+    $("#button").click(function(){
+        alert($("#input").val());
+  });
+});
+
+attr()获取选中元素的指定的属性的值，注意是属性的值值值！！！
+注意传递参数的时候要用引号括起来"href"/"id"
+$(document).ready(function(){
+   $("#button").click(function(){
+       alert("属性值为：" + $("#a").attr("href"));
+  });
+});
+当给这三个函数传递参数值时则为设置信息
+text()/html()设置值的时候会覆盖原有的内容
+text()
+$(document).ready(function(){
+    $("#button").click(function(){
+          $("#p").text("<strong>我是文本值</strong>");
+  });
+});
+关键来了注意这里只是设置文本值，添加的HTML标签信息也会以文本的格式显示出来
+不会参与DOM解析
+比如上面这里会设置文本值为：<strong>我是文本值</strong>
+html()
+<script>
+$(document).ready(function(){
+     $("#button").click(function(){
+         $("#html").html("<strong>我是HTML</strong>");
+  });
+});
+</script>
+注意这里添加的HTML标签信息才回参与DOM解析
+val()
+<script>
+$(document).ready(function(){
+   $("button").click(function(){
+       $("input[name='username']").val("周照平");
+ ]);
+});
+</script>
+使用xPath解析时，单引号与双引号不能一起使用，这样机器不能识别。
+
+
+
+以上三个函数都拥有回调函数callback
+回调函数有两个参数
+第一个参数是被选元素列表中当前元素的下标
+第二个参数是原始值(旧值)
+然后返回您希望使用的新值
+简单来说就是以新值替代旧值!!!!!!!
+简单来说就是以新值替代旧值!!!!!!!
+简单来说就是以新值替代旧值!!!!!!!
+返回值的类型是字符型
+返回值的类型是字符型
+返回值的类型是字符型
+
+<script>
+$(document).ready(function(){
+	$("#b1").click(function(){
+		$("#text").text(function(i,oldvalue){
+			return "6你麻痹";
+		});
+	});
+	$("#b2").click(function(){
+		$("#html").html(function(i,oldvalue){
+			return "<strong style='color:red'>HTML<strong>";
+		});
+	});
+	$("#b3").click(function(){
+		$("input[name='username']").val(function(i,oldvalue){
+			return "王二麻子";
+		});
+	});
+});
+</script>
+
+
+设置元素的属性值
+$(document).ready(function(){
+     $("#button").click(function(){
+          $("#a1").attr("href":"www.baidu.com","name":"aaa");
+  });
+});
+属性与属性值用冒号：一一对应，每组属性与属性值用逗号，隔开  属性与属性值用引号包裹
+
+attr()的回调函数
+和其它两个函数的区别在于需要提供需要处理的元素属性
+$(document).ready(function(){
+     $("#button").click(function(){
+        $("#a").attr("href",function(i,oldvalue){
+            return oldvalue + "jQuery";
+   });
+ });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,16 @@
+登录mysql
+mysql -u root -p
+输入密码即可
+
+其他操作：https://www.cnblogs.com/dupeng0811/p/4186416.html
+
+
+
+from django.urls import path
+from . import views
+urlpatterns = [
+    path('articles/2003/', views.special_case_2003),
+    path('articles/<int:year>/', views.year_archive),
+    path('articles/<int:year>/<int:month>/', views.month_archive),
+    path('articles/<int:year>/<int:month>/<slug>/', views.article_detail),
+]

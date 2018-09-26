@@ -1,0 +1,111 @@
+Django Model
+在子类中，不可以建立与其抽象父类相同的字段，Django表示对报错负责。
+
+class Animal(models.Model):
+   name = models.CharField(max_length=50)
+   age = models.PositiveIntegerField()
+   
+   # 下面这句决定了Animal是一个抽象类,可用于定于类的元信息
+   class Meta:
+       abstract = True
+
+class Meta-----为model类定义元数据
+
+class Meta的所有字段都是可选的，当然包括它自己也是可选的。
+app_label: 当model类未定义在默认app下的models.py文件中，可以指定该model类所在的app
+app_label = 'myapp'
+db_table = 'my_owner_table'使用自定义的表名，不使用系统默认(myapp_models)的表名全小写db_tablespace 字段model对应的数据库表在哪个数据库表空间。
+
+managed   是否根据model类自动生成对应数据库表，默认为True,当设置为FALSE时，除了不会对数据表进行创建、删除 等操作其它操作都是一样的。
+
+ordering 设置数据模型Model返回的集合是按哪个字段进行排序的
+ordering=['order_date']//按order_date字段升序排列
+ordering=['-order_date']//按order_date字段降序排列
+需要注意的是:不论你使用了多少个字段排序, admin 只使用第一个字段
+
+unique_together = (("first_name","last_name"),)
+当需要两个字段组合起来添加unique约束(constraint)
+
+verbose_name为你的模型类起一个可读性更强的别名
+
+verbose_name_plural 指定模型的复数形式，默认是 verbose_name + 's'
+
+
+admin.ModelAmdin 自定义后台管理，读取模式中的元数据，为网站管理者提供强大的后台管理。
+
+可选参数
+list_dispaly(' ',' ',)  定义需要在后台管理中需要显示的字段,名字必须和Model中的字段一样,具体怎么显示可以在Model中定义,如果在Model未定义如何显示则默认使用字段名大写显示。
+
+将app应用显示在后台管理中,需要在admin.py中注册，下面是两种注册方式:
+1 admin.site.register(Article,ArticleAdmin)
+2 @admin.register(Article)
+  class ArticleAdmin(admin.ModelAdmin):
+      list_display('content','comment_num','pub_date',)
+
+比较实用的字段有
+list_per_page = 10 //设置每页显示的记录数，默认是100
+
+ordering = ('-pub_date')//设置默认的排序字段，负号表示降序排序
+
+list_editable = ['poll_num']//设置默认可编辑字段
+
+fk_fields = ('poll_num')//设置显示外键字段
+
+筛选器
+
+list_filter = ('pub_date','poll_num')//过滤器，可以根据需要选择查看自己需要的记录
+
+serch_fields = ('pub_date','comment_num')//搜索字段,可以搜索出指定的记录
+
+可以通过在model类里定义一个函数为字段设置  颜色
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

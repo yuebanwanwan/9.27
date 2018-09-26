@@ -1,0 +1,131 @@
+jQuery添加元素
+
+append()在被选元素的结尾插入内容
+$(document).ready(function(){
+    $("#button").click(function(){
+         $("p").append("<b>Hello!</b>");
+  });
+});
+内容中的标签也会被机器解析
+prepend()在被选元素的首部添加内容
+$(document).ready(function(){
+       $("#button").click(function(){
+           $("p").prepend("<b>在元素首部添加元素</b>")
+  });
+});
+内容中的标签也会被解析
+after()在被选元素之后插入内容(注意此处的内容已经不属于这个元素了)
+$(document).ready(function(){
+    $("button").click(function(){
+        $("p").after("<b>在被选元素之后插入内容");
+ });
+});
+before()在被选元素之前插入内容
+
+使用append()和prepend()添加若干新元素
+<script>
+function addElement(){
+  var txt1 = "<p>txt1</p>";//使用html标签创建文本/元素
+  var txt2 = $("<p></p>").text("txt2");//使用jQuery创建文本/元素
+  var txt3 = document.creatElement("p");
+  txt3.innerHTML("txt3");        //使用DOM创建文本/元素
+  $("body").append(txt1,txt2,txt3); //追加新元素
+}
+</script>
+使用after()/before()添加新元素
+<script>
+function addElement(){
+    var element1 = "<p>element1</p>";
+    var element2 = "<p>element2</p>";
+    var element3 = document.createElement();
+    element3.text("<p>element3</p>");
+    $("div.intro").after(element1,element2,element3);
+}
+</script>
+
+
+jQuery删除元素
+删除元素常用的两个方法
+remove() --删除被选元素及其子元素
+empty()  --删除被选元素的子元素，不删除被选元素本省
+
+$(document).ready(function(){
+     $("div").remove();//删除所有div元素
+});
+$(document).ready(function(){
+     $("div").empty();//删除所有div元素的子元素
+});
+empty()就是一个清空的效果，删除元素中/内的所有内容，包括自己的文本。
+
+remove()方法还可以接受一个参数对被删除元素过滤进行精确定位(以免滥杀无辜~~~~~~~~~~~)
+删除class="italic"的p元素
+$("p").remove(".italic");
+empty()目前了解到没有参数
+
+jQuery()操作CSS
+例子采用的样式表如下
+.important
+{
+     font-weight:bold;
+     font-size: xx-large;
+}
+.blue
+{  
+      coloe:blue;
+}
+addClass()
+添加一个class属性
+$("h1,h2,p").addClass("blue");
+添加多个class属性
+$("h1,h2,p").addClass("blue important");
+
+removeClass()
+删除一个class属性
+$("h1,h3,p").removeClass("blue");
+删除多个class属性
+$("h1,h2").removeClass("blue important");
+
+toggleClass() 来回切换
+
+
+jQuery css()方法设置或返回被选元素的一个或多个样式/style属性
+返回style中color属性的值
+$("p").css("color");
+设置color属性的值
+$("p").css("color","red");
+设置style中多个属性的值
+$("p").css("color":"red","background":"red")
+
+注意如果是返回值的话会返回匹配的第一个元素
+如果是设置的话会设置所有匹配的元素
+
+
+
+jQuery 尺寸
+jQuery 提供多个处理尺寸的重要方法：
+
+width()         元素本身
+height()        元素本身
+innerWidth()    +padding 
+innerHeight()   +padding
+outerWidth()    +padding+Border
+outerHeight()   +padding+Border
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

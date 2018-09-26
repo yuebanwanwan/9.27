@@ -1,0 +1,29 @@
+jQuery load()方法
+简单强大的AJAX方法
+
+load()方法从服务器加载数据，并加载到被选元素中
+注意会覆盖元素中的原有内容
+
+
+$(selector).load(URL,date,callback);
+
+URL:必要参数
+data:可选的URL参数
+callback:可选的回调函数
+
+callback有三个参数
+response----包含load()调用成功的结果内容
+
+
+
+
+
+
+
+
+
+
+
+将文件中id="p1"的元素内容加载到选定的元素中
+$("div").eq(0).load("//.txt #p1");
+

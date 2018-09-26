@@ -1,0 +1,126 @@
+python manage.py runserver 主要做了两件事
+
+1 解析参数并通过一个特定的方法获取wsgi handler
+
+2 通过ip_address和port生成WSGIServer对象供用户请求
+
+WSGI =====Web Server Gateway Interface
+是Python语言定义的Web服务器与Web应用程序或框架之间的一种简单而通用的接口
+其实就是一个网关，其作用就是在协议之间进行转换
+
+Web服务器-----WSGI-------Web应用程序
+
+
+
+uWSGI(注意大小写敏感)是一个Web服务器，它实现了WSGI、uwsgi(这里为全小写)、http等协议，
+注意全小写的uwsgi是一种通信协议。uWSGI具有超快的性能、低内存占用和多app管理等优点。
+
+http://www.kuqin.com/shuoit/20141109/343106.html详细说明
+
+其中最重要的几个模块
+1 Middleware
+Middlewares可以渗透到处理流程的4个阶段reqeust、view、response、exception
+每个Middleware类中一般都有process_request  process_response  process_exception  process_view 中的一个或者多个方法，定义一个Middleware类只需实现其中的一个或者多个方法，你可以根据你的需求定义你的Middleware作用于哪个阶段。每个方法都可以直接返回Response
+Django2.1的Middleware是在settings中的MIDDLEWARE列表中配置的。
+
+中间件出现的顺序非常重要：在request和view的处理阶段，Django按照MIDDLEWARE_CLASSES中出现的顺序来应用中间件，而在response和exception异常处理阶段，Django则按逆序来调用它们。也就是说，Django将MIDDLEWARE_CLASSES视为view函数外层的顺序包装子：在request阶段按顺序从上到下穿过，而在response则反过来。以下两张图可以更好地帮助你理解：
+
+
+
+
+python中类属性是指定义在类的内部而在方法外部的属性
+对象属性是指定义在方法内部的属性
+
+当未覆盖父类的属性时，子类会使用父类的属性
+当覆盖了父类的属性时，子类会使用自己的属性
+在Python3中当没有继承有父类时，会自动继承object类
+
+
+
+super是用于子类重写父类的方法而不是覆盖父类的方法
+其实就是在于父类同名的方法中无耻的调用父类的实现.
+
+
+Python中的self参数可以传入其子类的实例
+
+class A(object):
+    def __init__(self):
+        self.n = 10
+
+    def minus(self,m):
+        self.n -= m
+
+class B(A):
+    def __init__(self):
+        self.n = 7
+
+    def minus(self,m):
+        super(B,self).minus(m)
+        self.n -= 2
+
+b = B()
+b.minus(2)
+print(b.n)
+输出结果为3 重点在于此处是B类的实例，则self.n 的数值是7
+
+
+在多继承时super的使用
+
+class A(object):
+    def __init__(self):
+        self.n = 10
+
+    def minus(self,m):
+        self.n -= m
+
+class B(A):
+    def __init__(self):
+        self.n = 7
+
+    def minus(self,m):
+        super(B,self).minus(m)
+        self.n -= 2
+
+class C(A):
+    def __init__(self):
+        self.n = 12
+
+    def minus(self,m):
+        super(C,self).minus(m)
+        self.n -= 5
+
+class D(B,C):
+    def __init__(self):
+        self.n = 15
+
+    def minus(self,m):
+        super(D,self).minus(m)
+        self.n -= 2
+
+d = D()
+d.minus(2)
+print(d.n)
+# MRO----Method Resolution Order方法解析顺序,代表了类的继承顺序
+# 注意这里B、C的方法都调用了
+print(D.__mro__)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

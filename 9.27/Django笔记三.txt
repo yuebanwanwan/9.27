@@ -1,0 +1,51 @@
+#1.Django是走大而全的方向，它最出名的是其全自动化的管理后台：只需要使用起ORM，做简单的对象定义，它就能自动生成数据库结构、以及全功能的管理后台。
+#2.Django内置的ORM跟框架内的其他模块耦合程度高。
+#应用程序必须使用Django内置的ORM，否则就不能享受到框架内提供的种种基于其ORM的便利；
+#理论上可以切换掉其ORM模块，但这就相当于要把装修完毕的房子拆除重新装修，倒不如一开始就去毛胚房做全新的装修。
+#3.Django的卖点是超高的开发效率，其性能扩展有限；采用Django的项目，在流量达到一定规模后，都需要对其进行重构，才能满足性能的要求。
+#4.Django适用的是中小型的网站，或者是作为大型网站快速实现产品雏形的工具。
+#5.Django模板的设计哲学是彻底的将代码、样式分离； Django从根本上杜绝在模板中进行编码、处理数据的可能。
+
+
+#1.Django走的是大而全的方向,开发效率高。它的MTV框架,自带的ORM,admin后台管理,自带的sqlite数据库和开发测试用的服务器
+#给开发者提高了超高的开发效率
+
+
+#WSGI:
+#    web服务器网关接口,是一套协议。用于接收用户请求并将请求进行初次封装，然后将请求交给web框架
+#    实现wsgi协议的模块：
+#        1.wsgiref,本质上就是编写一个socket服务端，用于接收用户请求(django)
+#        2.werkzeug,本质上就是编写一个socket服务端，用于接收用户请求(flask)
+#uwsgi:
+#    与WSGI一样是一种通信协议，它是uWSGI服务器的独占协议,用于定义传输信息的类型
+#uWSGI:
+#    是一个web服务器,实现了WSGI协议,uWSGI协议,http协议,
+
+
+
+http://www.cnblogs.com/chongdongxiaoyu/p/9403399.html
+总结的太好了
+总结的太好了
+总结的太好了
+总结的太好了
+https://www.cnblogs.com/chongdongxiaoyu/p/9054847.html
+
+
+https://blog.csdn.net/csdnsevenn/article/details/79068624
+
+https://blog.csdn.net/zhusongziye/article/details/79069434
+https://blog.csdn.net/IAlexanderI/article/details/65035857
+https://github.com/taizilongxu/interview_python
+妈的全是人才
+
+
+
+
+
+
+
+
+
+
+
+

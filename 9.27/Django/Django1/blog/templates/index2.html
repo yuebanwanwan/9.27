@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<script type="text/javascript" src=""></script>
+<body id="body">
+<p>请输入两个数字</p>
+<form action="" method="get">
+    a: <input type="text" id="a" name="a"> <br>
+    b: <input type="text" id="b" name="b"> <br>
+    <p>result: <span id='result'></span></p>
+    <button type="button" id='sum'>提交</button>
+    <label id="label1">等待AJAX请求返回状态码</label>
+</form>
+<div id="dict">Ajax加载字典</div>
+<div id="list">Ajax加载列表</div>
+<p id="dict1"></p>
+{#<img id="img1" src="" width="500" height="650" />#}
+
+
+<script src="http://apps.bdimg.com/libs/jquery/1.11.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function(){
+      $("#sum").click(function(){
+        var a = $("#a").val();
+        var b = $("#b").val();
+
+        $.get("/add/",{'a':a,'b':b}, function(ret,status){
+            $('#result').html(ret)
+            $('#label1').html(status)
+        })
+      });
+      $("#list").click(function () {
+          //使用name属性来获取网址
+          $.getJSON("{% url 'ajaxlist' %}",function (ret) {
+              for(var i=0;i<ret.length-1;i++){
+                  $("#list").append('  ' + ret[i] + '<br>')
+              }
+          })
+      });
+      $("#dict").click(function () {
+          //getJSON说明返回的是JSON对象
+         $.getJSON("/ajax_dict/",function (ret) {
+             //$("#dict").append(ret.twz + '<br>')
+             $("#body").append('<img id="img1" src="" width="500" height="650" />')
+             $("#img1").attr("src",ret.twz)
+         })
+      });
+      //处理复杂的列表(元素为字典)
+       $("#list").click(function () {
+           $.getJSON("{% url 'ajaxlist' %}",function(ret){
+               $.each(ret,function (i,item) {
+                   //i为索引,item为遍历值
+                   $("#list").append('name:'+ret[i].name+'age:'+ret[i].age+'<br>')
+               })
+           })
+       });
+       //处理复杂的字典(例如值为list)
+       $("#dict").click(function () {
+           $.getJSON("{% url 'ajaxdict' %}",function(ret){
+               //详见：http://api.jquery.com/jquery.each/
+               $.each(ret,function (key,value) {
+                   $("#dict").append('key:'+key+'<br>'+'value:'+value+'<br>')
+               })
+           })
+
+       });
+
+
+      
+    });
+</script>
+</body>
+</html>

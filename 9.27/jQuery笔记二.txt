@@ -1,0 +1,103 @@
+默认情况下HTML元素有一个静态的位置且是不可移动的
+如果想要设置动画效果必须将position属性设置为relative/fixed/absolute
+
+jQuery animate()方法用于创建自定义的动画效果
+jQuery其实是通过改变元素的位置来实现滑动效果的
+执行animate前要选择元素
+$(document).ready(function(){
+   $("button").click(function(){
+        $("div").animate({left:'250px'});
+  });
+});
+animate()参数
+params   必须的形成动画的CSS属性
+speed    
+callback 完成动画后执行的函数名称
+
+记住animate函数里面就不需要写函数了
+
+jQuery插件是用jQuery写的一些js代码
+
+jQuery animate()操作多个属性
+$(document).ready(function(){
+      $("div").animate({left:'250px',right:'300px'});
+});
+
+当使用 animate() 时，必须使用 Camel 标记法书写所有的属性名，比如，必须使用 paddingLeft 而不是 padding-left，使用 marginRight 而不是 margin-right，等等。
+animate()使用相对值
+$(document).ready(function(){
+      $("div").animate({left:'250px',right:'+=100px',bottom:'-=100px'});
+});
+
+
+单词animate:生命、活力、给与生命、给与活力
+jQuery animate() 使用队列功能
+$(document).ready(function(){
+       var div = $("div");
+       div.animate({});
+       div.animate({});
+       div.animate({});
+       div.animate({});
+});
+jQuery内置了队列，这些属性会依次执行。
+
+
+jQuery方法用于在执行动画时停止动画
+$(document).ready(function(){
+      $("button").click(function(){
+           $("div").slideDown(1000,callback);
+  });
+      $("#stop_button").click(function(){
+           $("div").stop();//停止选取的元素真正执行的动画
+  });
+});
+
+记住一般只有触发了事件才会以function(){}作为参数
+记住一般只有触发了事件才会以function(){}作为参数
+记住一般只有触发了事件才会以function(){}作为参数
+记住一般只有触发了事件才会以function(){}作为参数
+
+
+callback
+回调函数可以直接写匿名函数
+$(document).ready(function(){
+      $("button").click(function(){
+           $("p").hide('slow',function(){
+                  alert("I'am callback!!!")
+     })
+  });
+});
+
+jQuery Chaining
+jQuery允许把动作/方法链接在一起
+我们可以在一条语句中允许多个jQuery方法(注意注意是在同一元素上)
+这样我们就不必多次选择想要操作的同一个元素
+$("p").css("background-clor":"red").hide().show().fadeIn().fadeOut().fadeToggle().slideDown().slideUp().slideToggle();
+当进行链接时，代码行会变得很长。不过，jQuery 语法不是很严格；您可以按照希望的格式来写，包含换行和缩进。jQuery 会抛掉多余的空格，并当成一行长代码来执行上面的代码行。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

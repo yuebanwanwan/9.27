@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../../Django/Django1/.idea/Django1.iml" filepath="$PROJECT_DIR$/../../Django/Django1/.idea/Django1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../lianjia/.idea/lianjia.iml" filepath="$PROJECT_DIR$/../lianjia/.idea/lianjia.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../Django/mysite/.idea/mysite.iml" filepath="$PROJECT_DIR$/../../Django/mysite/.idea/mysite.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../scrapy_splash_proxy/.idea/scrapy_splash_proxy.iml" filepath="$PROJECT_DIR$/../scrapy_splash_proxy/.idea/scrapy_splash_proxy.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../scrapysplashdoupo/.idea/scrapysplashdoupo.iml" filepath="$PROJECT_DIR$/../scrapysplashdoupo/.idea/scrapysplashdoupo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/scrapyuniversal.iml" filepath="$PROJECT_DIR$/.idea/scrapyuniversal.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../splashloginzhihu/.idea/splashloginzhihu.iml" filepath="$PROJECT_DIR$/../splashloginzhihu/.idea/splashloginzhihu.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../zhihu/.idea/zhihu.iml" filepath="$PROJECT_DIR$/../zhihu/.idea/zhihu.iml" />
+    </modules>
+  </component>
+</project>

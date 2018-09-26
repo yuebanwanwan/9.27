@@ -1,0 +1,61 @@
+在HTML引用js
+<script type="text/javascript" src="js资源的url"></script>
+在HTML中引用css
+<link href="css资源的url" rel="stylesheet">
+
+
+
+
+
+jQuery fadeIn()淡入(显示)style="display:none"(已隐藏)的元素,原理就是删除该属性值
+jQuery fadeOut()则相反，为选择的元素添加style="display:none"用来隐藏元素
+
+
+jQuery slideDown()将display:none元素使元素"滑"出来,并改变属性值为display:block
+jQuery slideUp()则是相反的效果
+
+
+大部分jQuery效果的speed参数取以下值规定动作的速度："slow"、"fast"、毫秒
+
+
+
+jQuery动画
+
+默认情况下，所有 HTML 元素的位置都是静态的，并且无法移动。如需对位置进行操作，记得首先把元素的 CSS position 属性设置为 relative、fixed 或 absolute。
+
+所谓的动画效果就是通过设置css改变元素的位置，达到所谓的动画效果
+
+只有不可变的值才能进行哈希运算，因此只有不可变的值才能作为dict中key的关键字(比如不可变类型tuple可以而可变类型list不行一样)
+
+python 取整和其它不一样的地方在于运算符是//而不像其它语言那样是/
+python 的幂运算符是**  比如2**20-----2的20次方
+
+
+python 的比较运算符和其它语言相比没有区别，返回类型也都是bool类型
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

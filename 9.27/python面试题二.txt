@@ -1,0 +1,77 @@
+>>>sum([0,1,2])  
+3  
+>>> sum((2, 3, 4), 1)        # 元组计算总和后再加 1
+10
+>>> sum([0,1,2,3,4], 2)      # 列表计算总和后再加 2
+12
+
+
+>>> list1 = [-2, 1, 3, -6, 5, 8]
+>>> sums = sum(map(lambda x:x+3,list1[1::2]))
+>>> sums
+12
+
+用List的成员函数sort进行排序，在本地进行排序，不返回副本,返回<class 'NoneType'>
+没有返回值
+
+
+sorted进行排序（从2.4开始），返回副本，原始输入不变,不影响原来list对象
+
+注意sorted不是list的成员函数
+>>> list5
+[10, 9, 8]
+>>> list7 = sorted(list5)
+>>> list7
+[8, 9, 10]
+>>> 
+
+>>> list10 = [1,-2,3,-4]
+>>> list11 = sorted(list10,key=abs)
+>>> list11
+[1, -2, 3, -4]
+>>> 
+>>> list12 = sorted(list10,reverse=True)
+>>> list12
+[3, 1, -2, -4]
+>>> 
+key：用列表元素的某个属性或函数进行作为关键字，有默认值，迭代集合中的一项;
+reverse：排序规则. reverse = True  降序 或者 reverse = False 升序，有默认值。
+
+
+>>> from collections import Counter
+>>> obj = Counter('45asd454asf463a4sfa4sa74f4a4sd')
+>>> print(obj)
+Counter({'4': 9, 'a': 6, 's': 5, 'f': 3, '5': 2, 'd': 2, '6': 1, '3': 1, '7': 1})
+>>> 
+
+Counter计数器是对字典的补充，追踪值的出现次数，返回的是字典格式。
+
+返回文本中每个单词出现的次数
+
+from collections import Counter
+
+counter = Counter()
+
+with open('a.txt','r',encoding='utf-8') as f:
+        
+        for line in f.readlines():
+                words = line.split()#以空格之类指定参与统计的每个元素
+                c1 = Counter(words)
+                counter.update(c1)
+print(type(counter))
+print(counter)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

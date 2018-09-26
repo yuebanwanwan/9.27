@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"> 
+	<title>菜鸟教程(runoob.com)</title> 
+	<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">  
+	<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+	<div class="modal fade" id="createFileMModal" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="createFileTitle">创建文件</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="fileName" class="col-form-label">文件名</label>
+            <input type="text" autofocus class="form-control" id="fileName">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" id="createFileSureBut">确定</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+        // 修改弹出框的title, 显示弹框
+        function ShowCreateModal(title){
+            $("#createFileTitle").text(title);
+            $('#createFileMModal').modal('show');
+        }
+        // 关闭弹框， 获取输入值，然后执行逻辑
+        $("#createFileSureBut").click(function (){
+            $("#createFileMModal").modal("hide");
+            var inputFileName = $("#fileName").val();
+            console.log("input file name : " + inputFileName);
+        });
+</script>
+
+</body>
+</html>
+
+
+
+
+
+<div style="padding: 100px 100px 10px;">
+    <form class="bs-example bs-example-form" role="form">
+        <div class="input-group input-group-lg">
+            <span class="input-group-addon" style="color:green">回复评论</span>
+            <input type="text" class="form-control" placeholder="Twitterhandle">
+        </div>
+        <br>
+    </form>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

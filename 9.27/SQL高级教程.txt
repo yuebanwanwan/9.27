@@ -1,0 +1,153 @@
+TOP字句指定返回数目的记录(传入指定的数目或者百分比)
+记住TOP只是一个概念在不同的数据库中拥有不同的语法
+比如在Mysql中
+select * from tables LIMIT number
+在和order by 连用时，limit要放在后面
+
+
+LIKE操作符
+LIKE后面的参数是要放在‘’引号里的
+
+LIKE 'a%'匹配a开头的
+LIKE‘%a’匹配a结尾的
+LIKE'%a%'匹配包含a的
+如果需要取相反的数据的话只需要NOT LIKE就行
+
+SQL通配符
+必须与LIKE一起用，类似正则表达式,说白了就是SQL里的正则表达式而已
+% 匹配一个或多个字符
+_  该下划线只匹配一个字符
+在Mysql数据库中好像只有这两个通配符
+
+
+
+如果想使用正则表达式的话需要用一下的用法
+select * from table where name regexp '/s/d'
+正则表达式是大小写敏感的如果你想匹配大小写的字母可参考如下例子：
+[aA]匹配大写或者小写的a字母
+[a-zA-Z]匹配所有大小写的字母
+
+[a-z] 可以用来匹配任意位置上的小写字母: "...a..."
+^[a-z] 只能匹配以小写字母为行首的行: "a..."
+[a-z]$ 只能匹配以小写字母为行尾的行: "...a"
+^[a-z]$ 应该只能匹配只有一个小写字母的行: "a"
+简单来说^ 和 $ 限定了它所匹配的字符必须在行首或者行尾！！
+^还有一种语法，比如：
+[abc]是匹配a或者b或者c字符
+er
+[^abc]是匹配除了这三个字符以外的其他单个字符
+* 匹配0个或者多个表达式
++ 匹配1个或者多个表达式
+
+
+
+
+注意：Mysql中内置的通配符_和%不能和正则表达式混用！！！！！！！！！！！！
+'http://[a-zA-Z]*'
+在Mysql中将LIKE关键字换为regexp
+
+
+
+
+
+SQL IN 语法
+允许我们在where字句中指定我们要匹配值的范围
+select * from s1 where age in (1,2,3)只匹配该列属性值为1，2，3的元组/记录。
+
+
+在Mysql中创建表并设置自动增加
+create table orders(
+   id_o int not null auto_increment,primary key(id_o),
+   orderno int);
+在创建表以后添加主键自增
+ALTER TABLE `persons`
+MODIFY COLUMN `id_p`  int(11) NOT NULL AUTO_INCREMENT FIRST ;
+当其它表的外键约束指向该表是此操作会失败
+
+SQL JOIN
+select p.firstname,o.orderno from persons as p inner join orders as o where p.id_p=o.id_o;
+注意：JOIN都用ON来匹配条件
+
+
+Mysql目前不支持全外连接
+Mysql目前不支持全外连接
+
+
+
+请注意，UNION 内部的 SELECT 语句必须拥有相同数量的列。列也必须拥有相似的数据类型。同时，每条 SELECT 语句中的列的顺序必须相同。
+
+列的数量必须相同，类型也必须相同，顺序也必须相同
+最后的结果集的列名采用第一个结果集的列名
+UNION 会筛选掉重复的数据
+UNION ALL会返回所有数据
+
+
+为约束命名统一语法
+constraint just_name check(id)
+constraint just_name unique(...)
+constraint just_name foreign key(sss) references othertable(id)
+
+注意注意Mysql目前并不用支持check约束
+Mysql目前并不支持check约束
+Mysql目前并不支持check约束
+
+
+
+SQL索引
+创建一个简单的索引，允许使用重复的值
+alter table table_name
+add index(column_name)
+
+
+
+
+MySQL 使用下列数据类型在数据库中存储日期或日期/时间值：
+
+DATE - 格式 YYYY-MM-DD
+DATETIME - 格式: YYYY-MM-DD HH:MM:SS
+TIMESTAMP - 格式: YYYY-MM-DD HH:MM:SS
+YEAR - 格式 YYYY 或 YY
+
+如果我们使用上面的 SELECT 语句：
+
+SELECT * FROM Orders WHERE OrderDate='2008-12-26'
+那么我们得不到结果。这是由于该查询不含有时间部分的日期。
+
+提示：如果您希望使查询简单且更易维护，那么请不要在日期中使用时间部分！
+
+
+
+
+那么我们如何测试 NULL 值呢？
+
+无法使用比较运算符来测试 NULL 值，比如 =, <, 或者 <>。
+
+我们必须使用 IS NULL 和 IS NOT NULL 操作符。
+
+
+
+
+Modify当需要修改表的属性时
+统一使用modify
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

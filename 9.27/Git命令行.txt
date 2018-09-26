@@ -1,0 +1,30 @@
+1 创建用户名以及邮箱
+git config --global user.name "username"
+git config --global user.email "email"
+2 初始化Git仓库
+git init
+3 向暂存区提交文件
+git add filename 
+4 向仓库提交文件
+git commit -m “关于改动内容的注释”
+5 查看当前工作状态
+git status
+6 恢复暂存区域到上一次的状态
+git reset HEAD
+7 将暂存区域中的文件覆盖工作目录中已修改的文件
+git checkout -- 文件名
+8 查看版本记录
+git log
+9 查看上（~符号个数）的快照（版本）
+git reset HEAD~
+-移动HEAD的指向，将其指向上一个快照
+-将HEAD移动后指向的快照回滚到暂存区域
+10 git reset -- soft HEAD~
+对比git reset HEAD~ 仅仅是将HEAD指向上一个快照，换言之就是撤销了上一次的提交（commit）
+并没有改变暂存区域的内容
+
+
+11 
+git add -A  提交所有变化
+git add -u  提交被修改(modified)和被删除(deleted)文件，不包括新文件(new)
+git add .  提交新文件(new)和被修改(modified)文件，不包括被删除(deleted)文件

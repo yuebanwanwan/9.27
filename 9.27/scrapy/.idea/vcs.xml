@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$/bilibili" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/scrapy_splash_proxy" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/scrapysplashdoupo" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/zhihustar" vcs="Git" />
+  </component>
+</project>

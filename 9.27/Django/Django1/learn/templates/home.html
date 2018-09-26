@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% block title %}欢迎光临首页{% endblock %}
+
+{% block content %}
+这里是首页，欢迎光临</br>
+{{ string }}<br>
+
+{#教程列表：#}
+{#    {% for i in TutorialList %}#}
+{#    {{ i }}#}
+{#    {% endfor %}#}
+
+{#    站点：{{ info_dict.site }} 内容：{{ info_dict.content }}#}
+{#    {% for key, value in info_dict.items %}#}
+{#        {{ key }}: {{ value }}#}
+{#    {% endfor %}#}
+
+{#    {% for item in List %}#}
+{#        {{ item }},#}
+{#    {% endfor %}#}
+
+{#    {% url 'learnadd' a b %}#}
+{#    <a href="{% url 'learnadd' a b %}">link</a>#}
+
+{#    {% if var >= 90 %}#}
+{#    成绩优秀，自强学堂你没少去吧~学的不错~#}
+{#    {% elif var >= 80 %}#}
+{#    成绩良好#}
+{#    {% elif var >= 70 %}#}
+{#    成绩一般#}
+{#    {% elif var >= 60 %}#}
+{#    需要努力#}
+{#    {% else %}#}
+{#    不及格啊，兄die~多去自强学堂学习啊~#}
+{#    {% endif %}#}
+{##}
+{#    {% if request.user.is_authenticated %}#}
+{#        {{ request.user.username }},您好!#}
+{#    {% else %}#}
+{#        请登录，这里放登录链接#}
+{#    {% endif %}#}
+{#    </br>#}
+{##}
+{#    {{ request.user }}#}
+{#    <br>#}
+{##}
+{#    {{ request.path }}#}
+{#    <br>#}
+{##}
+{#    {{ request.GET.urlencode }}#}
+{#    <br>#}
+{##}
+    <a href="{{ request.path }}?{{ request.GET.urlencode }}&delete=1">当前网址加参数 delete</a>
+    <br>
+    你好
+    {{ context.latest_articles }}
+
+    User Name: {{ request.user.username }}
+
+{% endblock %}

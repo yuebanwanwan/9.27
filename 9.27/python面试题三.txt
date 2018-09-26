@@ -1,0 +1,138 @@
+@property装饰器
+主要是用于检查参数并负责把一个方法变为属性调用(python对代码简洁的极致追求)
+
+将getter方法变为属性只需要添加@porperty装饰器
+将setter方法变为属性只需要添加@对应gettr的方法名.setter
+还可以定义只读属性，只定义getter方法，不定义setter方法就是一个只读属性：
+
+class Student(object):
+    pass
+
+s = Student()
+s.score = 9999
+print(s.__dict__)
+print(s.score)
+s.score = 'hello word'
+print(s.__dict__)
+print(s.score)
+如果说这样可以随便修改属性，这显然不合逻辑
+
+@property可以把方法属性变为变量属性，这样就可以用调用变量属性的方法来调用方法属性
+这个decorator是用于获取对象属性的，类似getter
+
+把一个getter方法变成属性，只需要加上@property就可以了，此时，@property本身又创建了另一个装饰器@score.setter，负责把一个setter方法变成属性赋值
+
+
+
+
+class Student(object):
+
+    def __init__(self):
+        self.__a = 10
+
+    @property
+    def score(self):
+        return self._score
+
+    @score.setter
+    def score(self,value):
+        if not isinstance(value,int):
+            raise ValueError('score must be an integer')
+        if value < 0 or value >100:
+            raise ValueError('score must between 0~100')
+        self._score = value
+
+s = Student()
+s.score = 60#实际转化为s.set_score()
+s.score#实际转化为s.get_score()
+
+
+
+
+__dict__:以字典形式列出字典的属性和值
+
+__mro__:Method Resolution Order 方法解析顺序(类的继承顺序),只有类对象有这个属性(不是类的实例)
+
+__bases__:类的所有父类构成的元组
+
+dir(object):返回对象的属性名列表,当没有参数时,返回当前作用域的名称列表
+
+python默认的成员函数和成员变量都是公开的
+
+1、 _xx 以单下划线开头的表示的是protected类型的变量。即保护类型只能允许其本身与子类进行访问。若内部变量标示，如： 当使用“from M import”时，不会将以一个下划线开头的对象引入 。
+
+2、 __xx 双下划线的表示的是私有类型的变量。只能允许这个类本身进行访问了，连子类也不可以用于命名一个类属性（类变量），调用时名字被改变（在类FooBar内部，__boo变成_FooBar__boo,如self._FooBar__boo）
+
+3、 __xx__定义的是特列方法。用户控制的命名空间内的变量或是属性，如init , __import__或是file 。只有当文档有说明时使用，不要自己定义这类变量。 （就是说这些是python内部定义的变量名）
+
+
+protected类型的变量和方法 在 类变量中/类的实例中 可以直接获取和调用(不需要定义get函数),该类的子类变量和子类实例变量是一样的权限和用法.
+
+ 
+私有类型的变量和方法 在类的实例中获取和调用不到.
+此时想要获取该变量可以定义一个获取该变量的接口(function)
+eg:
+
+def get(self):
+	return self.__private
+
+class Student(object):
+	__private = 20
+
+class xueba(Student):
+	pass
+
+s = Student()
+x = xueba()
+
+以下的方式都可以获取到该类型的变量
+
+Student.get(Student)
+s.get()
+xueba.get(xueba)
+x.get()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,306 @@
+isinstance() 与 type() 区别：
+
+type() 不会认为子类是一种父类类型，不考虑继承关系。
+
+isinstance() 会认为子类是一种父类类型，考虑继承关系。
+
+isinstance(object, classinfo)
+
+eg   if not isinstance(object,int):
+	pass
+
+python逻辑运算符not取反类似c++/java ！运算符
+
+
+
+如果子类私有方法覆盖了父类私有方法，则不会出现运行时多态特性.
+
+__名字，这种语法只在定义的时候才有变形的效果，如果类或对象已经产生了，就不会有变形得效果了
+
+
+这就是“_ get_”的作用了，将整个对象都作为数据描述符，但是请记住，要想““_ get_””作为数据描述符，那么此对象只能作为类属性，作为实例属性则无效，如下：
+
+
+class Dept(object):
+
+    def __init__(self, name):
+        self.name = name
+
+    # target是拥有此属性的对象
+    def __get__(self, target, type=None):
+        # 默认返回self与obj都可以
+        return 'Dept'
+
+class Company(object):
+    #   一定要作为类属性，作为实例属性无效
+    dept = Dept('organ')
+
+# 现在的测试结果
+x = Company()
+#   返回True
+print(x.dept)
+print(type(x.dept) == str)
+
+Dept
+True
+
+
+object.__get__(self, instance, owner) 
+如果class定义了它，则这个class就可以称为descriptor。owner是所有者的类，instance是访问descriptor的实例，如果不是通过实例访问，而是通过类访问的话，instance则为None。（descriptor的实例自己访问自己是不会触发__get__，而会触发__call__，只有descriptor作为其它类的属性才有意义。）（所以下文的d是作为C2的一个属性被调用） 
+
+
+
+
+
+FBV
+在url中一个路径对应一个函数
+urlpatterns = [
+	path('admin/',admin.site.url),
+	path('index/',views.index),
+]
+在views函数中
+def index(request):
+	return render(request,'index.html')
+
+
+CBV
+url中一个路径对应一个类
+urlpatterns = [
+	path('admin/',admin.site.urls),
+	path('index/',views.IndexView.as_view())
+]
+在views函数中
+
+from django.views import View
+class IndexView(View):
+	#get请求时访问该函数,一般用于获取数据
+	def get(self,*args,**kargs):
+		return HttpResponse('666')
+	
+	#post请求时访问该函数，一般用于提交数据
+	def post(self,*args,**kargs):
+		return HttpResponse('999')
+
+注意：
+CBV定义类时必须继承View
+在写path/url的时候必须加as_view
+类里面使用form表单提交的话只有get和post方法
+
+CBV重新定义dispatch函数
+所有方法本质上都是通过dispatch这个函数反射执行，如果想要在执行get或post方法前执行其他步骤，可以重写dispatch
+
+from django.views import View 
+
+class IndexView(View):
+	#重写父类的dispatch方法，如果不重写会调用父类的dispatch方法
+	def dispatch(self,request,*args,**kargs):
+		print('before')
+		res = super(IndexView,self).dispatch(request,*args,**kargs)
+		print('after')
+		return res
+
+	def get(request,*args,**kargs):
+		return HttpResponse('666')
+
+
+	def post(request,*args,**kargs):
+		return HttpResponse('999')
+
+
+
+根据上面的写法添加用户验证
+
+class LoginView(View):
+	def get(self,request):
+		return render(request,'login.html')
+
+	def post(self,request):
+		username = request.POST.get(username)
+		password = request.POST.get(password)
+		if username == '周照平' and password = 'yuebanwan@':
+			request.session['username'] = '周照平'
+			return redirect('/index/')
+		else:
+			return render(request,'login.html')
+
+class IndexView(View):
+	def dispacth(self,request,*args,**kargs):
+		if not request.session['username']:
+			return render(request,'login.html')
+		res = super(IndexView,self).dispatch(request,*args,**kargs)
+		return res	
+
+定义带参数的decoretor
+
+def login_test(func):
+	def inner(request,*args,**kargs):
+		if not request.session['username']:
+			return render(request,'login.html')
+		return func(*args,**kargs)
+	return inner
+	
+@login_test
+def dispatch(self,request,*args,**kargs)
+	pass
+会进行用户的自动验证
+
+
+
+首先说说Web服务器开发领域里著名的MVC模式，所谓MVC就是把Web应用分为模型(M)，控制器(C)和视图(V)三层，他们之间以一种插件式的、松耦合的方式连接在一起，模型负责业务对象与数据库的映射(ORM)，视图负责与用户的交互(页面)，控制器接受用户的输入调用模型和视图完成用户的请求
+
+Django的MTV模式本质上和MVC是一样的，也是为了各组件间保持松耦合关系，只是定义上有些许不同，Django的MTV分别是值：
+M 代表模型（Model）：负责业务对象和数据库的关系映射(ORM)。
+T 代表模板 (Template)：负责如何把页面展示给用户(html)。
+V 代表视图（View）：负责业务逻辑，并在适当时候调用Model和Template。
+
+
+
+命令模式
+
+在软件系统中，“行为请求者”与“行为实现者”通常呈现一种“紧耦合”。但在某些场合，比如要对行为进行“记录、撤销/重做、事务”等处理，这种无法抵御变化的紧耦合是不合适的。在这种情况下，如何将“行为请求者”与“行为实现者”解耦？将一组行为抽象为对象，实现二者之间的松耦合，这就是命令模式（Command Pattern）。
+
+process_template_responseprocess : 模板渲染时执行
+
+302对比301：302是一个临时跳转，旧地址的资源还在
+
+
+基于Django使用ajax发送post请求时，使用哪些方法携带csfr_token
+1 发送post请求时携带这个值
+2 获取form中隐藏标签csfrtoken值
+3 可以放在cookies中
+
+uWSGI具有超快的性能、低内存占用和多app管理等优点，并且搭配着Nginx就是一个生产环境了，能够将用户访问请求与应用 app 隔离开，实现真正的部署 。
+#相比来讲，支持的并发量更高，方便管理多进程，发挥多核的优势，提升性能。
+
+
+QuerySet对象的常用方法
+1 all()
+2 filter()
+3 get()
+4 exclude()
+5 order_by()
+5 reverse()
+6 count()
+7 first()
+8 last()
+
+
+django中Form和ModelForm的作用
+
+在前端生成HTML代码
+对用户输入进行检验
+
+
+
+on_delete=models.CASCADE,     # 删除关联数据,与之关联也删除
+总结：on_delete属性定义当删除关联数据时的行为
+
+
+execute执行自定义的SQL
+
+首先restful是一种软件架构风格或者说是一种设计风格，并不是标准，它只是提供了一组设计#原则和约束条件，主要用于客户端和服务器交互类的软件。     
+#就像设计模式一样，并不是一定要遵循这些原则，而是基于这个风格设计的软件可以更简洁，更#有层次，我们可以根据开发的实际情况，做相应的改变。
+
+54. 如何实现用户的登陆认证
+
+#1.cookie session
+#2.token 登陆成功后生成加密字符串
+
+跨域：
+# 浏览器从一个域
+名的网页去请求另一个域名的资源时,浏览器处于安全的考虑,不允许不同源的请求
+
+
+
+订单为何会重复提交
+1 客户端bug
+2 超时
+
+解决重复提交的办法
+1 使用一个由客户端生成的，可用于避免重复的key，俗称dedup key(deduplicate key)
+
+2 后端数据库表设计,添加deduplicate_key字段并添加unique约束
+
+3 可设置token(令牌),根据token的有效时间和允许的有效次数来防止用户重复提交.
+
+4 用redis实现计数器现在用户的访问次数
+
+
+订单支付问题
+
+使用数据库行锁
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
